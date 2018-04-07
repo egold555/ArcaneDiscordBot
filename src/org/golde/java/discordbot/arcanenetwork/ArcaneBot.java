@@ -26,7 +26,7 @@ public class ArcaneBot {
 
 	
 	
-	public final String prefix = ".";
+	public final String prefix = "~";
 	private IDiscordClient bot;
 	boolean botIsRunning = false;
 	private List<DiscordCommand> cmds = new ArrayList<DiscordCommand>();
@@ -45,12 +45,12 @@ public class ArcaneBot {
 	
 	@EventSubscriber
 	public void onJoin(final UserJoinEvent e) {
-		bot.getChannelByID(Channels.ARCANE).sendMessage("Welcome " + e.getUser().mention() + " to the ArcaneNetwork! Enjoy your stay!");
+		bot.getChannelByID(Channels.ARCANE).sendMessage("Welcome " + e.getUser().mention() + " to the Arcane Network! Enjoy your stay. :)");
 	}
 	
 	@EventSubscriber
 	public void onLeave(final UserLeaveEvent e) {
-		bot.getChannelByID(Channels.ARCANE).sendMessage("We're sorry to see you go " + e.getUser().mention() + ". Come again soon!");
+		bot.getChannelByID(Channels.ARCANE).sendMessage("Goodbye, " + e.getUser().mention() + ". Come again soon.. :(");
 	}
 	
 	
