@@ -26,6 +26,7 @@ public class CommandHelp extends DiscordCommand {
 		msg.add("**Administrator Commands **");
 		msg.add(" ");
 		msg.add("  1) ~purge - Purges as many messages as discord can handel in the given channel");
+		msg.add("  2) ~announce - Announce stuff!");
 		msg.add(" ");
 		
 	}
