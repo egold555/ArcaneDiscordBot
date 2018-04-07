@@ -9,7 +9,7 @@ import sx.blah.discord.handle.obj.IUser;
 
 public class JokeCommand extends DiscordCommand{
 
-	public CommandTest(ArcaneBot bot) throws ArcaneException {
+	public JokeCommand(ArcaneBot bot) throws ArcaneException {
 		super(bot, "joke");
 	}
 

@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.golde.java.discordbot.arcanenetwork.cmds.CommandTest;
-import org.golde.java.discordbot.arcanenetwork.cmds.DiscordCommand;
-import org.golde.java.discordbot.arcanenetwork.helpers.ArcaneException;
-import org.golde.java.discordbot.arcanenetwork.helpers.Channels;
+import org.golde.java.discordbot.arcanenetwork.cmds.*;
+import org.golde.java.discordbot.arcanenetwork.helpers.*;
 
 import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
@@ -32,6 +30,7 @@ public class ArcaneBot {
 
 	private void registerCommands() throws ArcaneException {
 		cmds.add(new CommandTest(this));
+		cmds.add(new JokeCommand(this));
 	}
 
 	private void tick() {
