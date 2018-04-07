@@ -10,7 +10,7 @@ import sx.blah.discord.handle.obj.IUser;
 public class CommandPurge extends DiscordCommand {
 
 	public CommandPurge(ArcaneBot bot) throws ArcaneException {
-		super(bot, "purgemsg");
+		super(bot, "purge");
 	}
 
 	@Override

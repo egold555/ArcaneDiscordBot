@@ -31,7 +31,7 @@ public class ArcaneBot {
 	private List<DiscordCommand> cmds = new ArrayList<DiscordCommand>();
 
 	private void registerCommands() throws ArcaneException {
-		cmds.add(new CommandTest(this));
+		cmds.add(new CommandHelp(this));
 		cmds.add(new JokeCommand(this));
 		cmds.add(new CommandPurge(this));
 	}
@@ -129,6 +129,7 @@ public class ArcaneBot {
 				String[] args = split.length >= 2 ? Arrays.copyOfRange(split, 1, split.length) : new String[0];
 				for(DiscordCommand ac:cmds) {
 					if(ac.getCmd().equals(command)) {
+						message.delete(); //Delete command as a message ebcause it was a command
 						ac.execute(user, channel, message, args);
 					}
 				}
@@ -155,6 +156,10 @@ public class ArcaneBot {
 	private void log(String msg) {
 		System.out.println(msg);
 		bot.getChannelByID(Channels.LOGS).sendMessage(msg);
+	}
+	
+	public List<DiscordCommand> getCmds() {
+		return cmds;
 	}
 
 }
