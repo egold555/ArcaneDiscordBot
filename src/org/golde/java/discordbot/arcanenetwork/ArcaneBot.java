@@ -9,6 +9,7 @@ import org.golde.java.discordbot.arcanenetwork.cmds.CommandTest;
 import org.golde.java.discordbot.arcanenetwork.cmds.DiscordCommand;
 import org.golde.java.discordbot.arcanenetwork.helpers.ArcaneException;
 import org.golde.java.discordbot.arcanenetwork.helpers.Channels;
+import org.golde.java.discordbot.arcanenetwork.helpers.Messages;
 
 import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
@@ -45,12 +46,12 @@ public class ArcaneBot {
 	
 	@EventSubscriber
 	public void onJoin(final UserJoinEvent e) {
-		bot.getChannelByID(Channels.ARCANE).sendMessage("Welcome " + e.getUser().mention() + " to the ArcaneNetwork! Enjoy your stay!");
+		bot.getChannelByID(Channels.ARCANE).sendMessage(Messages.WELCOMER_JOIN.format(e.getUser()));
 	}
 	
 	@EventSubscriber
 	public void onLeave(final UserLeaveEvent e) {
-		bot.getChannelByID(Channels.ARCANE).sendMessage("We're sorry to see you go " + e.getUser().mention() + ". Come again soon!");
+		bot.getChannelByID(Channels.ARCANE).sendMessage(Messages.WELCOMER_Leave.format(e.getUser()));
 	}
 	
 	
