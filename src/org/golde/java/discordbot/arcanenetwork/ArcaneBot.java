@@ -102,7 +102,7 @@ public class ArcaneBot {
 	@EventSubscriber
 	public void onReadyEvent(ReadyEvent event) {
 		
-		bot.online();
+		bot.online("~help");
 
 		for(DiscordCommand command:cmds) {
 			command.onReady();
