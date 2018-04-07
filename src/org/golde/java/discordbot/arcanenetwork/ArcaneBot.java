@@ -35,6 +35,7 @@ public class ArcaneBot {
 		cmds.add(new JokeCommand(this));
 		cmds.add(new CommandPurge(this));
 		cmds.add(new CommandAnnounce(this));
+		cmds.add(new CommandChangelog(this));
 	}
 
 	private void tick() {
