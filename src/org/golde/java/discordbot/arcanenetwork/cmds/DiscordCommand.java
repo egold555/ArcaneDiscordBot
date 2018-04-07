@@ -5,10 +5,13 @@ import org.golde.java.discordbot.arcanenetwork.helpers.ArcaneException;
 
 import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.handle.obj.IMessage;
+import sx.blah.discord.handle.obj.IRole;
 import sx.blah.discord.handle.obj.IUser;
 
 public abstract class DiscordCommand {
 
+	public final String NO_PERM = "You do not have permission to use that command!";
+	
 	private final String theCMD;
 	private final ArcaneBot bot;
 
@@ -33,6 +36,15 @@ public abstract class DiscordCommand {
 
 	public final ArcaneBot getDiscordBot() {
 		return bot;
+	}
+	
+	public final boolean hasRole(IUser user, String roleName) {
+		for(IRole role : user.getRolesForGuild(bot.getGuild())) {
+			if(role.getName().equalsIgnoreCase(roleName)) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 }

@@ -2,6 +2,7 @@ package org.golde.java.discordbot.arcanenetwork;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import org.golde.java.discordbot.arcanenetwork.cmds.*;
@@ -16,6 +17,7 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedE
 import sx.blah.discord.handle.impl.events.guild.member.UserJoinEvent;
 import sx.blah.discord.handle.impl.events.guild.member.UserLeaveEvent;
 import sx.blah.discord.handle.obj.IChannel;
+import sx.blah.discord.handle.obj.IGuild;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.handle.obj.IUser;
 
@@ -31,6 +33,7 @@ public class ArcaneBot {
 	private void registerCommands() throws ArcaneException {
 		cmds.add(new CommandTest(this));
 		cmds.add(new JokeCommand(this));
+		cmds.add(new CommandPurge(this));
 	}
 
 	private void tick() {
@@ -74,7 +77,7 @@ public class ArcaneBot {
 		for(DiscordCommand cmd:cmds) {
 			dispatcher.registerListener(cmd);
 		}
-
+		
 		while(botIsRunning) {
 			if(botIsReady) {
 				tick();
@@ -87,6 +90,7 @@ public class ArcaneBot {
 	}
 	
 	public void stop() {
+		log("Stopped: " + new Date());
 		for(DiscordCommand cmd:cmds) {
 			cmd.shutdown();
 		}
@@ -97,12 +101,15 @@ public class ArcaneBot {
 	
 	@EventSubscriber
 	public void onReadyEvent(ReadyEvent event) {
+		
 		bot.online();
 
 		for(DiscordCommand command:cmds) {
 			command.onReady();
 		}
 
+		log("Started: " + new Date());
+		
 	}
 
 	@EventSubscriber
@@ -141,6 +148,13 @@ public class ArcaneBot {
 		return bot;
 	}
 	
+	public IGuild getGuild() {
+		return bot.getGuildByID(431963123646332938L);
+	}
 	
+	private void log(String msg) {
+		System.out.println(msg);
+		bot.getChannelByID(Channels.LOGS).sendMessage(msg);
+	}
 
 }
