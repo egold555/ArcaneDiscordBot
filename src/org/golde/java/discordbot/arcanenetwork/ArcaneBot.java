@@ -2,14 +2,12 @@ package org.golde.java.discordbot.arcanenetwork;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 import org.golde.java.discordbot.arcanenetwork.cmds.CommandTest;
 import org.golde.java.discordbot.arcanenetwork.cmds.DiscordCommand;
 import org.golde.java.discordbot.arcanenetwork.helpers.ArcaneException;
 import org.golde.java.discordbot.arcanenetwork.helpers.Channels;
-import org.golde.java.discordbot.arcanenetwork.helpers.Messages;
 
 import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
@@ -27,7 +25,7 @@ public class ArcaneBot {
 
 	
 	
-	public final String prefix = ".";
+	public final String prefix = "~";
 	private IDiscordClient bot;
 	boolean botIsRunning = false;
 	private List<DiscordCommand> cmds = new ArrayList<DiscordCommand>();
@@ -46,12 +44,12 @@ public class ArcaneBot {
 	
 	@EventSubscriber
 	public void onJoin(final UserJoinEvent e) {
-		bot.getChannelByID(Channels.ARCANE).sendMessage(Messages.WELCOMER_JOIN.format(e.getUser()));
+		bot.getChannelByID(Channels.ARCANE).sendMessage("Welcome " + e.getUser().mention() + " to the Arcane Network! Enjoy your stay. :)");
 	}
 	
 	@EventSubscriber
 	public void onLeave(final UserLeaveEvent e) {
-		bot.getChannelByID(Channels.ARCANE).sendMessage(Messages.WELCOMER_Leave.format(e.getUser()));
+		bot.getChannelByID(Channels.ARCANE).sendMessage("Goodbye, " + e.getUser().mention() + ". Come again soon.. :(");
 	}
 	
 	
