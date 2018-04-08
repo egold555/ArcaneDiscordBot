@@ -36,6 +36,7 @@ public class ArcaneBot {
 		cmds.add(new CommandPurge(this));
 		cmds.add(new CommandAnnounce(this));
 		cmds.add(new CommandChangelog(this));
+		cmds.add(new CommandMusic(this));
 	}
 
 	private void tick() {
@@ -104,7 +105,7 @@ public class ArcaneBot {
 	@EventSubscriber
 	public void onReadyEvent(ReadyEvent event) {
 		
-		bot.online("~help");
+		bot.online("Arcane Bot 1.1");
 
 		for(DiscordCommand command:cmds) {
 			command.onReady();
