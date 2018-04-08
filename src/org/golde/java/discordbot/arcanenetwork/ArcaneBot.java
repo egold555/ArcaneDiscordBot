@@ -66,7 +66,7 @@ public class ArcaneBot {
 
 		boolean botIsReady = false;
 		ClientBuilder clientBuilder = new ClientBuilder();
-		clientBuilder.withToken("NDMyMjI5MzQyMjgyNzc2NTc2.DaqQdg.SLjCAxC0dHhe-FBQGbqfnaXukso");
+		clientBuilder.withToken("Snipped");
 		bot = clientBuilder.login();
 		EventDispatcher dispatcher = bot.getDispatcher();
 		if(bot != null && dispatcher != null) {
